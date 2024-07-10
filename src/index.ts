@@ -88,6 +88,18 @@ export default {
                 return res;
             }
 
+            if (url.pathname == '/widget/events') {
+                const bodyText = await hbsAsyncRender(Handlebars, 'widget-events', {
+                    events: util.getSortedEvents(eventData)
+                });
+                res = new Response(bodyText);
+                res.headers.set("Content-Type", "text/html");
+                res.headers.set("Cache-Control", "public, max-age=3600");
+                res.headers.set('Content-Encoding', 'gzip');
+                res.headers.set("Etag", util.cyrb53(bodyText));
+                return res;
+            }
+
             res = new Response(JSON.stringify(eventData), {
                 status: 200
             });

@@ -1,0 +1,59 @@
+<html>
+
+<head>
+    {{> common/global this }}
+    {{!-- {{> analytics/widget this }} --}}
+    {{> style/widget this }}
+
+</head>
+
+<body>
+    {{#if events.length}}
+        <div class="container mx-auto py-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-h">
+                {{#each events}}
+                {{!-- <div class="border-b border-white pb-2"> --}}
+                    <div class="flex sm:space-x-8 w-[395px] h-[111px]">
+                      <div class="max-w-lg w-full bg-transparent overflow-hidden">
+                        <div class="grid grid-cols-12 h-full">
+                          <div class="col-span-3 h-full">
+                            <img class="w-[90px] h-[90px] object-cover border-white border h-full" src="{{ this.data.imageUrl }}" alt="{{ this.data.title }}">
+                          </div>
+                          <div class="col-span-9">
+                            <div>
+                              <div class="h-7 text-xs space-x-10 p-1.5">
+                                <div class="flex flex-row">
+                                  <p class="mr-auto bg-white text-black">{{ format_date this.data.dateTime }}</p>
+                                  <div class="flex flex-row">
+                                    <p class="mr-2 text-white text-[9px]">{{ this.data.venue.name }}</p>
+                                    <div class="w-[16px] h-[16px]">
+                                      <svg fill="#ffffff" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 92 92" enable-background="new 0 0 92 92" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path id="XMLID_89_" d="M43.3,73.8c-0.8,0-1.6-0.3-2.2-0.8c-1-0.8-1.5-2.1-1.2-3.4l4.9-25l-2.7,1.5c-1.7,0.9-3.8,0.4-4.8-1.3 c-0.9-1.7-0.4-3.8,1.3-4.8l9.3-5.3c1.2-0.7,2.7-0.6,3.8,0.2c1.1,0.8,1.6,2.2,1.4,3.5L48,64.4l4.2-1.8c1.8-0.8,3.8,0,4.6,1.8 c0.8,1.8,0,3.8-1.8,4.6l-10.3,4.5C44.3,73.7,43.8,73.8,43.3,73.8z M53.2,26c0.9-0.9,1.5-2.2,1.5-3.5c0-1.3-0.5-2.6-1.5-3.5 c-0.9-0.9-2.2-1.5-3.5-1.5c-1.3,0-2.6,0.5-3.5,1.5c-0.9,0.9-1.5,2.2-1.5,3.5c0,1.3,0.5,2.6,1.5,3.5c0.9,0.9,2.2,1.5,3.5,1.5 C51,27.5,52.3,27,53.2,26z M92,46C92,20.6,71.4,0,46,0S0,20.6,0,46s20.6,46,46,46S92,71.4,92,46z M84,46c0,21-17,38-38,38S8,67,8,46 S25,8,46,8S84,25,84,46z"></path> </g></svg>                                  </div>
+                                    </div>
+                                </div>
+                              </div>
+                              <div class="text-[8px] px-2 py-0">
+                                <p class="mr-auto text-[14px] text-white">{{ render_short_title this.data.title }}</p>
+                                <p class="text-[10px] text-white">{{ render_short_description this.data.description }}</p>
+                              </div>
+                              <div class="text-xs flex justify-center items-center">
+                                <button class="border border-white text-white text-[12px] w-full py-2 mt-3">Réserver ma place</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  {{!-- </div> --}}
+                {{/each}}
+            </div>
+        </div>
+    {{else}}
+        <div class="bg-white shadow rounded-lg p-6">
+            <div class="flex mt-4 mb-4 justify-center items-center">
+                <h2 class="text-2xl font-semibold">No upcoming events.</h2>
+            </div>
+        </div>
+    {{/if}}
+</body>
+
+</html>

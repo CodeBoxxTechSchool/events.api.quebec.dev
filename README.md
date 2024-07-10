@@ -53,7 +53,8 @@ https://events.api.tampa.dev/html or https://tampa.dev/upcoming-events
 To start the local development environment, execute the following command:
 
 ```bash
-wrangler dev -l
+yarn
+yarn start
 ```
 
 Your local instance of the Events API will become available at http://localhost:8787.
